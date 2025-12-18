@@ -8,3 +8,6 @@ data/
 outputs/
 *.log
 *.sqlite
+models/
+data/
+results_*.json # опционально

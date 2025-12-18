@@ -1,0 +1,31 @@
+default_stages: [pre-commit]
+exclude: |
+  (?x)^(
+    \.venv/|
+    data/|
+    models/|
+    .*\.ipynb|
+    .*site-packages/|
+    .*dist-packages/
+  )
+
+repos:
+  - repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+      - id: black
+        language_version: python3.11
+        files: ^(src/.*\.py)$
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+        files: ^(src/.*\.py)$
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        files: ^(src/.*\.py)$
